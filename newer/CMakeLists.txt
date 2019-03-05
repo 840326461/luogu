@@ -3,4 +3,4 @@ project(newer)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(newer orderAndBranch/P1909.cpp)
+add_executable(newer loop/P1008.cpp)

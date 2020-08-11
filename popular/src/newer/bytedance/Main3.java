@@ -1,4 +1,4 @@
-package bytedance;
+package newer.bytedance;
 
 import java.io.BufferedReader;
 import java.io.IOException;

@@ -1,4 +1,4 @@
-package huawei;
+package newer.huawei;
 
 import java.util.Scanner;
 

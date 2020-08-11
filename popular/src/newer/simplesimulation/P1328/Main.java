@@ -1,4 +1,4 @@
-package simplesimulation.P1328;
+package newer.simplesimulation.P1328;
 
 import java.util.Scanner;
 

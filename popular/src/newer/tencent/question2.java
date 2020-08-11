@@ -1,4 +1,4 @@
-package tencent;
+package newer.tencent;
 
 import java.util.Scanner;
 

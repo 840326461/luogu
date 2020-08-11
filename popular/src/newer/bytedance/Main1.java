@@ -1,4 +1,4 @@
-package bytedance;
+package newer.bytedance;
 
 import java.util.ArrayList;
 import java.util.Scanner;

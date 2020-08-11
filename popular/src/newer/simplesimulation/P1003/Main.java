@@ -1,4 +1,4 @@
-package simplesimulation.P1003;
+package newer.simplesimulation.P1003;
 
 import java.util.Scanner;
 

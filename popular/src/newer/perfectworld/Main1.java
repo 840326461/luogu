@@ -1,36 +1,60 @@
-package simplesimulation.P1563;
+package newer.perfectworld;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.Scanner;
+import java.util.Arrays;
 import java.util.StringTokenizer;
 
-public class Main {
+public class Main1 {
     public static void main(String[] args) {
         InputReader s = new InputReader(System.in);
         int n = s.nextInt();
-        int m = s.nextInt();
-        int[] directions = new int[n];
-        String[] toys = new String[n];
+        int[] ta = new int[n];
+        int[] tb = new int[n];
         for (int i = 0; i < n; i++) {
-            directions[i]=s.nextInt();
-            toys[i] = s.next();
+            ta[i] = s.nextInt();
         }
-        int index = 0;
-        for (int i = 0; i < m; i++) {
-            if ((s.nextInt() ^ directions[index]) == 1) {
-                index=(index+s.nextInt())%n;
+        for (int i = 0; i < n; i++) {
+            tb[i] = s.nextInt();
+        }
+        Arrays.sort(ta);
+        Arrays.sort(tb);
+        int index=n-1;
+        while(true){
+            if (index==-1){
+                System.out.println(-100*n);
+                return;
+            }
+            if (ta[n-1]<tb[index]){
+                index--;
             }else {
-                index=index-s.nextInt()%n;
-                if (index<0){
-                    index+=n;
-                }
+                break;
             }
         }
-        System.out.print(toys[index]);
+        int indexA=n-1;
+        int score=0;
+        for (int i=index;i>=0;i--){
+            if(ta[indexA]>tb[i]){
+                score+=100;
+            }else if (ta[indexA]<tb[i]){
+                score-=100;
+            }
+            indexA--;
+        }
+        int indexB=n-1;
+        for (int i=0;i<=indexA;i++){
+            if(ta[i]>tb[indexB]){
+                score+=100;
+            }else if (ta[i]<tb[indexB]){
+                score-=100;
+            }
+            indexB--;
+        }
+        System.out.println(score);
     }
+
     static class InputReader {
         public BufferedReader reader;
         public StringTokenizer tokenizer;

@@ -1,4 +1,4 @@
-package crosssimulation.P1031;
+package newer.crosssimulation.P1031;
 
 import java.util.Scanner;
 

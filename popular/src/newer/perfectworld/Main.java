@@ -1,36 +1,48 @@
-package simplesimulation.P1563;
+package newer.perfectworld;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.Scanner;
 import java.util.StringTokenizer;
 
 public class Main {
+    static int[][] map;
+    static int n;
+    static int m;
+    static int min;
+
     public static void main(String[] args) {
         InputReader s = new InputReader(System.in);
-        int n = s.nextInt();
-        int m = s.nextInt();
-        int[] directions = new int[n];
-        String[] toys = new String[n];
+        n = s.nextInt();
+        m = s.nextInt();
+        map = new int[n][m];
         for (int i = 0; i < n; i++) {
-            directions[i]=s.nextInt();
-            toys[i] = s.next();
-        }
-        int index = 0;
-        for (int i = 0; i < m; i++) {
-            if ((s.nextInt() ^ directions[index]) == 1) {
-                index=(index+s.nextInt())%n;
-            }else {
-                index=index-s.nextInt()%n;
-                if (index<0){
-                    index+=n;
-                }
+            for (int j = 0; j < m; j++) {
+                map[i][j] = s.nextInt();
             }
         }
-        System.out.print(toys[index]);
+        min = Integer.MAX_VALUE;
+        DFS(n - 1, m - 1, 1);
+        if (min < 0) System.out.println(0);
+        else System.out.println(min);
     }
+
+    private static void DFS(int a, int b, int hp) {
+        if (a == 0 && b == 0) {
+            hp -= map[a][b];
+            if (hp < min) min = hp;
+        }
+        hp -= map[a][b];
+        if (hp <= 0) hp = 1;
+        if (a > 0) {
+            DFS(a - 1, b, hp);
+        }
+        if (b > 0) {
+            DFS(a, b - 1, hp);
+        }
+    }
+
     static class InputReader {
         public BufferedReader reader;
         public StringTokenizer tokenizer;
